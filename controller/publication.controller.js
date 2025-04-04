@@ -1,7 +1,11 @@
 const Publication = require('../model/publication.model.js');
 
 exports.createPublication = async (req, res) => {
-    const newPublication = await Publication.create({ _text: req.body });
+    console.log("🚀 ~ exports.createPublication= ~ req.token:", req.token)
+    const newPublication = await Publication.create({ 
+        text: req.body.text,
+        userToken: req.token._id,
+    });
     if (!newPublication) {
         return res.status(400).json({ error: "Error creating publication" });
     }
@@ -33,9 +37,11 @@ exports.getPublicationById = async (req, res) => {
 }
 
 exports.updatePublication = async (req, res) => { 
+    const user = await User.findById( {_id: req.token._id} );
     const publication = await Publication.findById( {_id: req.params.id} );
-    if(!publication) {
-        return res.status(404).json({ error: "Publication not found" });
+   
+    if(!publication || publication.userToken !== user.token) {
+        return res.status(404).json({ error: "Publication not found or the user doesn't have the right" });
     }
     if(!req.body.texte) {
         return res.status(400).json({ error: "Text is required" });

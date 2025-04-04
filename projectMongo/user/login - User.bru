@@ -1,0 +1,22 @@
+meta {
+  name: login - User
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/auth/login
+  body: json
+  auth: none
+}
+
+headers {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VmZWFhMTcxYTEzNTQ5N2E5NDFlZjciLCJlbWFpbCI6ImZsb3JpYW5AZ21haWwuY29tIiwicHNldWRvIjoiZmxvcmlhbiIsImlhdCI6MTc0Mzc3NjQ4MiwiZXhwIjoxNzQzODYyODgyfQ.gI37P8C3O3dKu9WOa-vWbCQAs_puSaJqHJdxyoqkuBA
+}
+
+body:json {
+  {
+    "email": "florian@gmail.com",
+    "password": "abd123*"
+  }
+}

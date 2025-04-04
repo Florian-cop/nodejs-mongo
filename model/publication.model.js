@@ -6,7 +6,10 @@ const postSchema = new Schema({
         type: String,
         required: true,
     },
-    picture: String
+    picture: String,
+    userToken: {
+        type: String,
+    }
 });
 
 const User = mongoose.model('Post', postSchema);

@@ -22,6 +22,9 @@ const user = new Schema({
             return value.length >= 6;
         }
     },
+    token: {
+        type: String,
+    }
 });
 
 const User = mongoose.model('User',user);
