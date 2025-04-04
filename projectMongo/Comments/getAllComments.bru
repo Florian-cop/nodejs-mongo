@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: http://localhost:3000/publication
+  url: http://localhost:3000/comments/{{id_comments}}
   body: none
   auth: none
+}
+
+headers {
+  Authorization: {{token_jwt}}
 }

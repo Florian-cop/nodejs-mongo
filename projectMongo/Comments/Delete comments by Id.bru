@@ -5,7 +5,11 @@ meta {
 }
 
 delete {
-  url: http://localhost:3000/comments/67efe73d27cfcfb0bca35abc
+  url: http://localhost:3000/comments/{{id_comments}}
   body: none
   auth: none
+}
+
+headers {
+  Authorization: {{token_jwt}}
 }
