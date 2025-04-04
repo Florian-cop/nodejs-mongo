@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 
 exports.signin = async (req, res) => {
-    if (!req.body.email || req.body.email === "" || !req.body.password || req.body.password === "" || req.body.pseudo === "" || req.body.pseudo.length < 3) {
+    if (!req.body.email || req.body.email === "" || !req.body.password || req.body.password === "" || req.body.pseudo === "") {
         return res.status(400).json({ message: "Veuillez saisir un email, un pseudo, et un mot de passe" })
     };
     let user = await User.create({
@@ -12,7 +12,7 @@ exports.signin = async (req, res) => {
         pseudo: req.body.pseudo,
         password: bcrypt.hashSync(req.body.password, 10),
     });
-    res.status(201).json(user);
+    return res.status(201).json(user);
 }
 
 exports.login = async (req, res) => {

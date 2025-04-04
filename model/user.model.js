@@ -16,7 +16,12 @@ const user = new Schema({
             return value.length >= 3;
         }
     },
-    password: String,
+    password: {
+        type: String,
+        validate: function(value){
+            return value.length >= 6;
+        }
+    },
 });
 
 const User = mongoose.model('User',user);
