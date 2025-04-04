@@ -1,0 +1,20 @@
+meta {
+  name: create Publications
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/publication
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  [
+  }]
+}
+
+body:multipart-form {
+  texte: fdgfdg
+}
