@@ -56,3 +56,5 @@ Ce projet est une application Node.js utilisant MongoDB comme base de données. 
 - `DELETE /publications/:id` : Supprimer une publication.
 
 
+### Travail en DUO avec Lisa Yous sur les commits de Florian-Cop
+## Travail sur tout le comments, middleware, documentation
