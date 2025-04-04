@@ -1,0 +1,23 @@
+meta {
+  name: create Comments
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/comments/add
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  [
+    {
+      "text": "fffff"
+    }
+  ]
+}
+
+body:multipart-form {
+  text: fdgfdg
+}

@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../model/user.model");
+const User = require("../model/user.model.js");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
@@ -9,6 +9,7 @@ exports.signin = async (req, res) => {
     };
     let user = await User.create({
         email: req.body.email,
+        pseudo: req.body.pseudo,
         password: bcrypt.hashSync(req.body.password, 10),
     });
     res.status(201).json(user);
@@ -28,9 +29,11 @@ exports.login = async (req, res) => {
     return res.status(200).json({
         _id: user._id,
         email: user.email,
+        pseudo: user.pseudo,
         token: jwt.sign({
             _id: user._id,
-            email: user.email
+            email: user.email,
+            pseudo: user.pseudo
         }, process.env.JWT_KEY, { expiresIn: '24H' })
     });
 }
