@@ -11,14 +11,13 @@ post {
 }
 
 headers {
-  authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VmZWFhMTcxYTEzNTQ5N2E5NDFlZjciLCJlbWFpbCI6ImZsb3JpYW5AZ21haWwuY29tIiwicHNldWRvIjoiZmxvcmlhbiIsImlhdCI6MTc0Mzc3Nzk2MiwiZXhwIjoxNzQzODY0MzYyfQ.JNRXTF5cm9j5sjJQDywyy5yG5zEDhqBMPetCobmr4Dg
+  authorization: {{token_jwt}}
 }
 
 body:json {
-  
-    {
-      "text": "tokken"
-    }
+  {
+    "text": "tokken"
+  }
 }
 
 body:multipart-form {

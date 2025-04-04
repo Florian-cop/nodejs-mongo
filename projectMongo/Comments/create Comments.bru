@@ -6,16 +6,18 @@ meta {
 
 post {
   url: http://localhost:3000/comments/add
-  body: multipartForm
+  body: json
   auth: none
 }
 
+headers {
+  Authorization: {{token_jwt}}
+}
+
 body:json {
-  [
-    {
-      "text": "fffff"
-    }
-  ]
+  {
+    "text": "bfbbf"
+  }
 }
 
 body:multipart-form {
