@@ -15,7 +15,7 @@ const database = async () => {
 database();
 
 // const productRoute = require("./routes/product.route");
-// const authRoute = require("./routes/auth.route");
+const authRoute = require("./routes/auth.route");
 
 //common headers
 app.use((req, res, next) => {
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 
-// app.use('/auth', authRoute);
+app.use('/auth', authRoute);
 
 // app.use('/product', authMiddleware, productRoute);
 
