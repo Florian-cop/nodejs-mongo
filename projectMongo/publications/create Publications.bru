@@ -5,14 +5,20 @@ meta {
 }
 
 post {
-  url: http://localhost:3000/publication
-  body: multipartForm
+  url: http://localhost:3000/publications/
+  body: json
   auth: none
 }
 
+headers {
+  authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VmZWFhMTcxYTEzNTQ5N2E5NDFlZjciLCJlbWFpbCI6ImZsb3JpYW5AZ21haWwuY29tIiwicHNldWRvIjoiZmxvcmlhbiIsImlhdCI6MTc0Mzc3Nzk2MiwiZXhwIjoxNzQzODY0MzYyfQ.JNRXTF5cm9j5sjJQDywyy5yG5zEDhqBMPetCobmr4Dg
+}
+
 body:json {
-  [
-  }]
+  
+    {
+      "text": "tokken"
+    }
 }
 
 body:multipart-form {

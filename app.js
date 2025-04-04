@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const {connect} = require('./database/connection.js');
 
+const authMiddleware = require('./middleware/auth.middleware');
 
 app.use(express.json());
 
@@ -25,7 +26,7 @@ app.use((req, res, next) => {
 
 
 app.use('/auth', authRoute);
-app.use('/publications', publicationRoute);
+app.use('/publications',authMiddleware, publicationRoute);
 app.use('/comments', commentsRoute);
 
 module.exports = app;
