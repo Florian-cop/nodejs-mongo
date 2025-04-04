@@ -1,7 +1,7 @@
 const Publication = require('../model/publication.model.js');
 
 exports.createPublication = async (req, res) => {
-    const newPublication = await Publication.create({ text: req.body.text });
+    const newPublication = await Publication.create({ text: req.body.text, userId: req.user._id });
     if (!newPublication) {
         return res.status(400).json({ error: "Error creating publication" });
     }
@@ -44,6 +44,9 @@ exports.updatePublication = async (req, res) => {
         return res.status(400).json({ error: "Text is required" });
     }
     try {
+        if(publication.userId !== req.user._id) {
+            return res.status(403).json({ error: "You are not authorized to update this publication" });
+        }
         publication.text = req.body.text;
         await publication.save();
         return res.status(200).json(publication);
