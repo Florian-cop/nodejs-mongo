@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const authMiddleware = require('./middleware/auth.middleware');
+// const authMiddleware = require('./middleware/auth.middleware');
 
 const {connect} = require('./database/connection.js');
 
@@ -14,8 +14,8 @@ const database = async () => {
 
 database();
 
-const productRoute = require("./routes/product.route");
-const authRoute = require("./routes/auth.route");
+// const productRoute = require("./routes/product.route");
+// const authRoute = require("./routes/auth.route");
 
 //common headers
 app.use((req, res, next) => {
@@ -26,8 +26,10 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/auth', authRoute);
+// app.use('/auth', authRoute);
 
-app.use('/product', authMiddleware, productRoute);
+// app.use('/product', authMiddleware, productRoute);
+
+app.use('/comments', require('./routes/comments.route.js'));
 
 module.exports = app;
