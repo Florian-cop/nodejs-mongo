@@ -1,7 +1,7 @@
 const Publication = require('../model/publication.model.js');
 
 exports.createPublication = async (req, res) => {
-    const newPublication = await Publication.create({ _text: req.body });
+    const newPublication = await Publication.create({ text: req.body.text });
     if (!newPublication) {
         return res.status(400).json({ error: "Error creating publication" });
     }
@@ -37,11 +37,18 @@ exports.updatePublication = async (req, res) => {
     if(!publication) {
         return res.status(404).json({ error: "Publication not found" });
     }
-    if(!req.body.texte) {
+    if(!req.body.text) {
         return res.status(400).json({ error: "Text is required" });
     }
-    if(req.body.texte === "") {
+    if(req.body.text === "") {
         return res.status(400).json({ error: "Text is required" });
+    }
+    try {
+        publication.text = req.body.text;
+        await publication.save();
+        return res.status(200).json(publication);
+    } catch (error) {
+        return res.status(500).json({ error: "Error updating publication" });
     }
     return res.status(200).json({ message: "Publication updated successfully" });
 }
