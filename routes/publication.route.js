@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const publicationController = require('./../controller/publication.controller.js');
 
-router.post('/', publicationController.create);
+router.post('/', publicationController.createPublication);
 router.get('/', publicationController.getAllPublications);  
 router.get('/:id', publicationController.getPublicationById);
 router.put('/:id', publicationController.updatePublication);

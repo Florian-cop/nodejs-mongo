@@ -1,11 +1,19 @@
-const Publication = require('../model/publication.model');
+const Publication = require('../model/publication.model.js');
 
 exports.createPublication = async (req, res) => {
     const newPublication = await Publication.create({ _text: req.body });
     if (!newPublication) {
         return res.status(400).json({ error: "Error creating publication" });
-    }   
+    }
+    if(req.file){
+        newPublication.picture = './picture/' + req.file.filename;
+    }
+    try {
+        await newPublication.save();
     res.status(201).json(newPublication);
+    } catch (error) {
+        return res.status(500).json({ error: "Error saving publication" });
+    }
 }
 
 exports.getAllPublications = async (req, res) => {

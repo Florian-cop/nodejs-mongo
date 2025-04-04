@@ -2,10 +2,11 @@ const  { Schema } = require("mongoose");
 const mongoose = require("mongoose");
 
 const postSchema = new Schema({
-   texte: {
+   text: {
         type: String,
-        unique: true,
+        required: true,
     },
+    picture: String
 });
 
 const User = mongoose.model('Post', postSchema);

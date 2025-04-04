@@ -1,11 +1,8 @@
 const express = require("express");
 const app = express();
-
-// const authMiddleware = require('./middleware/auth.middleware');
-
 const {connect} = require('./database/connection.js');
 
-//always return json objects
+
 app.use(express.json());
 
 const database = async () => {
@@ -14,10 +11,11 @@ const database = async () => {
 
 database();
 
-// const productRoute = require("./routes/product.route");
-// const authRoute = require("./routes/auth.route");
+const publicationRoute = require("./routes/publication.route.js");
+const commentsRoute = require("./routes/comments.route.js");
+const authRoute = require("./routes/auth.route");
 
-//common headers
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', "GET, POST");
@@ -26,10 +24,8 @@ app.use((req, res, next) => {
 });
 
 
-// app.use('/auth', authRoute);
-
-// app.use('/product', authMiddleware, productRoute);
-
-app.use('/comments', require('./routes/comments.route.js'));
+app.use('/auth', authRoute);
+app.use('/publications', publicationRoute);
+app.use('/comments', commentsRoute);
 
 module.exports = app;
