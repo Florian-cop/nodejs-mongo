@@ -1,0 +1,26 @@
+meta {
+  name: update Publications
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:3000/publications/
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VmZWFhMTcxYTEzNTQ5N2E5NDFlZjciLCJlbWFpbCI6ImZsb3JpYW5AZ21haWwuY29tIiwicHNldWRvIjoiZmxvcmlhbiIsImlhdCI6MTc0Mzc3NjQ4MiwiZXhwIjoxNzQzODYyODgyfQ.gI37P8C3O3dKu9WOa-vWbCQAs_puSaJqHJdxyoqkuBA
+}
+
+body:json {
+  
+    {
+      "text": "fffff"
+    }
+}
+
+body:multipart-form {
+  texte: fdgfdg
+}
